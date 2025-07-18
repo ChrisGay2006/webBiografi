@@ -3,46 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biografi [Karakter Anda]</title>
+    <title>Biografi [Nama Karakter]</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-4">
-        <h1>Biografi [Nama Karakter Anda]</h1>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="#" class="logo">[Nama Karakter]</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#achievements">Pencapaian</a></li>
+                <li><a href="#timeline">Linimasa</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="container my-5">
-        <section id="introduction" class="mb-4">
-            <h2>Perkenalan</h2>
-            <p>Tulis paragraf pengantar tentang karakter Anda di sini.</p>
-        </section>
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Biografi <span id="typewriter-text"></span></h1>
+            <p class="tagline">Pilar Kekuatan dan Integritas</p>
+            <div class="social-icons">
+                <a href="#" class="icon-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="icon-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
 
-        <section id="early-life" class="mb-4">
-            <h2>Masa Kecil dan Awal Kehidupan</h2>
-            <p>Jelaskan tentang latar belakang dan masa kecil karakter.</p>
-        </section>
+    <section id="about" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <h2>Tentang [Nama Karakter]</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="path/to/character-profile.jpg" alt="[Nama Karakter]">
+                </div>
+                <div class="about-text">
+                    <p>Tulis paragraf pengantar tentang karakter Anda di sini, fokus pada bagaimana sifat tanggung jawab dan kepercayaannya terbentuk dan memengaruhi kehidupannya.</p>
+                    <p>Jelaskan asal-usul, nilai-nilai awal, dan bagaimana ia dikenal sebagai sosok yang dapat diandalkan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="achievements" class="mb-4">
+    <section id="achievements" class="section-padding bg-light" data-aos="fade-up">
+        <div class="container">
             <h2>Pencapaian Penting</h2>
-            <p>Daftar pencapaian atau peristiwa penting dalam hidup karakter.</p>
-            <ul>
-                <li>Pencapaian 1</li>
-                <li>Pencapaian 2</li>
-            </ul>
-        </section>
+            <div class="achievements-grid">
+                <div class="achievement-item" data-aos="zoom-in">
+                    <h3>[Judul Pencapaian 1]</h3>
+                    <p>Deskripsi singkat tentang bagaimana pencapaian ini menunjukkan tanggung jawabnya.</p>
+                </div>
+                <div class="achievement-item" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>[Judul Pencapaian 2]</h3>
+                    <p>Bagaimana ia dipercaya untuk tugas ini dan berhasil menyelesaikannya.</p>
+                </div>
+                </div>
+        </div>
+    </section>
 
-        <section id="legacy" class="mb-4">
-            <h2>Warisan dan Pengaruh</h2>
-            <p>Bagaimana karakter ini meninggalkan dampak?</p>
-        </section>
-    </main>
+    <section id="timeline" class="section-padding" data-aos="fade-up">
+        <div class="container">
+            <h2>Linimasa Kehidupan</h2>
+            <div class="timeline-container">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">YYYY</div>
+                    <div class="timeline-content">
+                        <h3>[Peristiwa Penting 1]</h3>
+                        <p>Deskripsi singkat peristiwa yang menunjukkan perkembangan karakternya.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">YYYY</div>
+                    <div class="timeline-content">
+                        <h3>[Peristiwa Penting 2]</h3>
+                        <p>Bagaimana ia mendapatkan kepercayaan di momen ini.</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Biografi [Karakter Anda]</p>
+    <section id="gallery" class="section-padding bg-light" data-aos="fade-up">
+        <div class="container">
+            <h2>Galeri Visual</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up">
+                    <img src="path/to/image1.jpg" alt="Deskripsi Gambar 1">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/to/image2.jpg" alt="Deskripsi Gambar 2">
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Biografi [Nama Karakter]. Dibuat dengan Integritas.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Inisialisasi AOS
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
