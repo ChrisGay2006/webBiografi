@@ -32,16 +32,33 @@ h1, h2, h3 {
 
 /* Header/Navbar */
 .main-header {
-    background-color: #34495e; 
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: transparent; /* Awalnya transparan */
+    padding: 20px 0; /* Tambah padding agar lebih lega */
+    box-shadow: none; /* Hilangkan shadow awal */
     
-    position: fixed; 
-    width: 100%; 
+    position: fixed;
+    width: 100%;
     top: 0;
-    left: 0; 
-    z-index: 1000; 
-    
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Transisi untuk perubahan warna & shadow */
+}
+
+.main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Putih semi-transparan saat di-scroll */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Tambah shadow saat di-scroll */
+}
+
+.main-header .logo { /* Lebih spesifik agar warna berubah saat scroll */
+    color: #ecf0f1; /* Warna awal (putih/terang) */
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.4s ease; /* Transisi untuk perubahan warna teks logo */
+}
+
+.main-header.scrolled .logo {
+    color: #333; /* Warna gelap saat di-scroll */
 }
 
 .navbar {
@@ -68,19 +85,40 @@ h1, h2, h3 {
 }
 
 .nav-links li {
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 .nav-links a {
-    color: #ecf0f1;
+    color: #ecf0f1; /* Warna awal (putih/terang) */
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease, transform 0.3s ease; /* Efek hover */
+    position: relative; /* Penting untuk efek underline */
+    padding-bottom: 5px; /* Memberi ruang untuk underline */
+    transition: color 0.4s ease; /* Transisi untuk perubahan warna teks link */
 }
 
 .nav-links a:hover {
     color: #1abc9c; /* Hijau toska sebagai aksen */
     transform: translateY(-3px); /* Sedikit naik saat hover */
+}
+.main-header.scrolled .nav-links a {
+    color: #333; /* Warna gelap saat di-scroll */
+}
+
+/* Efek Underline saat Hover (mirip Rubens.design) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px; /* Tebal underline */
+    background-color: #1abc9c; /* Warna underline (aksen) */
+    left: 0;
+    bottom: 0; /* Posisi di bawah teks */
+    transition: width 0.3s ease-in-out; /* Animasi lebar underline */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Lebar underline menjadi 100% saat hover */
 }
 
 /* Hero Section */
@@ -291,16 +329,25 @@ h1, h2, h3 {
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
+        justify-content: center;
     }
 
     .nav-links {
         margin-top: 15px;
         flex-wrap: wrap;
         justify-content: center;
+        display: none;
     }
 
     .nav-links li {
         margin: 0 10px 10px 10px;
+    }
+
+    .main-header .logo {
+        color: #ecf0f1; /* Sesuaikan warna logo di mobile header */
+    }
+    .main-header.scrolled .logo {
+        color: #333;
     }
 
     .hero-content h1 {
