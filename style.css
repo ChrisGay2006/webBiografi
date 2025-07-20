@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif; /* Ganti dengan font pilihan Anda */
     line-height: 1.6;
     margin: 0;
-    padding: 0;
+    padding-top: 80px;
     background-color: #f8f8f8; /* Warna latar belakang terang */
     color: #333;
     overflow-x: hidden; /* Mencegah scroll horizontal dari animasi */
@@ -32,9 +32,16 @@ h1, h2, h3 {
 
 /* Header/Navbar */
 .main-header {
-    background-color: #34495e; /* Biru tua gelap */
+    background-color: #34495e; 
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    
+    position: fixed; 
+    width: 100%; 
+    top: 0;
+    left: 0; 
+    z-index: 1000; 
+    
 }
 
 .navbar {
@@ -86,6 +93,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     min-height: 70vh; /* Tinggi minimal */
+    padding-top: 230px;
 }
 
 .hero-content {
