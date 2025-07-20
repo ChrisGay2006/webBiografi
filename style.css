@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif; /* Ganti dengan font pilihan Anda */
     line-height: 1.6;
     margin: 0;
-    padding-top: 80px;
+    padding-top: 70px;
     background-color: #f8f8f8; /* Warna latar belakang terang */
     color: #333;
     overflow-x: hidden; /* Mencegah scroll horizontal dari animasi */
