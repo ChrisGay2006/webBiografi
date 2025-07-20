@@ -62,28 +62,36 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
 ---
 
 // Efek Navbar Muncul/Menghilang Saat Scroll & Active Link
-let lastScrollY = window.scrollY;
-const header = document.querySelector('.main-header');
-const sections = document.querySelectorAll('section'); // Dapatkan semua section
-const navLinks = document.querySelectorAll('.nav-links a'); // Dapatkan semua link navbar
+let lastScrollY = window.scrollY; // Variabel ini harus ada di luar event listener
+const header = document.querySelector('.main-header'); // Pastikan ini juga di luar agar hanya diambil sekali
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
+    // Pastikan semua elemen yang dibutuhkan sudah ditemukan
+    if (!header || !sections.length || !navLinks.length) {
+        // Ini akan muncul di console browser jika ada elemen yang tidak ditemukan
+        console.warn("Navbar elements not found, scroll effects might not work.");
+        return;
+    }
+
     // 1. Efek Muncul/Menghilang Navbar
-    if (header) { // Pastikan header ada
-        if (window.scrollY > lastScrollY && window.scrollY > header.offsetHeight + 50) { // Scroll ke bawah & sudah melewati tinggi header + offset
-            header.classList.add('hidden');
-        } else if (window.scrollY < lastScrollY || window.scrollY < header.offsetHeight) { // Scroll ke atas atau di paling atas halaman
-            header.classList.remove('hidden');
-        }
+    if (window.scrollY > lastScrollY && window.scrollY > header.offsetHeight + 50) { // Scroll ke bawah & sudah melewati tinggi header + offset
+        header.classList.add('hidden');
+    } else if (window.scrollY < lastScrollY || window.scrollY <= header.offsetHeight) { // Scroll ke atas atau di paling atas halaman
+        header.classList.remove('hidden');
     }
     lastScrollY = window.scrollY; // Update posisi scroll terakhir
 
-    // 2. Efek Active Link "Spotlight"
+    // 2. Efek Active Link "Spotlight" (tetap sama)
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - header.offsetHeight - 50; // Offset untuk penandaan aktif
+        // Sesuaikan offset agar sesuai dengan posisi navbar fixed dan padding section
+        // Ini sangat penting agar link aktif berubah tepat pada waktunya
+        const sectionTop = section.offsetTop - header.offsetHeight - 50; // Perlu disesuaikan lebih lanjut jika ada padding/margin lain
         const sectionHeight = section.clientHeight;
         const sectionId = section.getAttribute('id');
 
+        // Pastikan section terlihat di viewport
         if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
