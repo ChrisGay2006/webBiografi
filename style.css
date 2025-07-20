@@ -93,7 +93,6 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     min-height: 70vh; /* Tinggi minimal */
-    padding-top: 50px;
 }
 
 .hero-content {
