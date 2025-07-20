@@ -1,15 +1,14 @@
 // Efek Mengetik (Typewriter Effect)
 const textElement = document.getElementById('typewriter-text');
-const texts = ["[Nama Karakter]"]; // Ganti dengan nama karakter Anda atau tambahkan variasi teks lainnya
+const texts = ["[Nama Karakter]"];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-const typingSpeed = 200; // Kecepatan mengetik (ms)
-const deletingSpeed = 200; // Kecepatan menghapus (ms)
-const delayBetweenTexts = 2000; // Jeda antar teks (ms)
+const typingSpeed = 200;
+const deletingSpeed = 200;
+const delayBetweenTexts = 2000;
 
 function typeWriter() {
-    // Pastikan elemen ada sebelum mencoba mengaksesnya
     if (!textElement) {
         console.warn("Element with ID 'typewriter-text' not found. Typewriter effect will not run.");
         return;
@@ -25,36 +24,35 @@ function typeWriter() {
     }
 
     if (!isDeleting && charIndex === currentText.length) {
-        // Selesai mengetik, mulai menghapus setelah jeda
         setTimeout(() => isDeleting = true, delayBetweenTexts);
     } else if (isDeleting && charIndex === 0) {
-        // Selesai menghapus, pindah ke teks berikutnya
         isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length; // Mengulang teks
+        textIndex = (textIndex + 1) % texts.length;
     }
 
     const speed = isDeleting ? deletingSpeed : typingSpeed;
     setTimeout(typeWriter, speed);
 }
 
+// Inisialisasi efek mengetik setelah DOM dimuat
 document.addEventListener('DOMContentLoaded', typeWriter);
 
 ---
 
-// Smooth Scroll untuk Navigasi
+// Smooth Scroll untuk Navigasi (tetap sama)
 document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-        const header = document.querySelector('.main-header'); // Dapatkan header
+        const header = document.querySelector('.main-header');
 
         if (targetElement && header) {
-            // Hitung offset agar konten tidak tertutup header fixed
-            const headerHeight = header.offsetHeight;
+            // Kita mungkin perlu sedikit offset tambahan karena navbar tidak di top:0
+            const offset = header.offsetHeight + 20; // Tinggi header + jarak tambahan
             window.scrollTo({
-                top: targetElement.offsetTop - headerHeight,
+                top: targetElement.offsetTop - offset,
                 behavior: 'smooth'
             });
         }
@@ -63,14 +61,46 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
 
 ---
 
-// Efek Perubahan Navbar saat Scroll (mirip Rubens.design)
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('.main-header');
-    if (header) { // Pastikan elemen header ditemukan
-        if (window.scrollY > 50) { // Jika scroll lebih dari 50px dari atas
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// Efek Navbar Muncul/Menghilang Saat Scroll & Active Link
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.main-header');
+const sections = document.querySelectorAll('section'); // Dapatkan semua section
+const navLinks = document.querySelectorAll('.nav-links a'); // Dapatkan semua link navbar
+
+window.addEventListener('scroll', () => {
+    // 1. Efek Muncul/Menghilang Navbar
+    if (header) { // Pastikan header ada
+        if (window.scrollY > lastScrollY && window.scrollY > header.offsetHeight + 50) { // Scroll ke bawah & sudah melewati tinggi header + offset
+            header.classList.add('hidden');
+        } else if (window.scrollY < lastScrollY || window.scrollY < header.offsetHeight) { // Scroll ke atas atau di paling atas halaman
+            header.classList.remove('hidden');
         }
+    }
+    lastScrollY = window.scrollY; // Update posisi scroll terakhir
+
+    // 2. Efek Active Link "Spotlight"
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - header.offsetHeight - 50; // Offset untuk penandaan aktif
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+
+    // Menangani kasus saat di paling atas halaman (Home)
+    if (window.scrollY === 0) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#home') {
+                link.classList.add('active');
+            }
+        });
     }
 });
