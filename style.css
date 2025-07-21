@@ -35,7 +35,7 @@ h1, h2, h3 {
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     
-    position: fixed;
+    position: center;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -61,7 +61,7 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%; /* Agar mengisi lebar .main-header */
+    width: 100%; /* Agar mengisi lebar .main-header */
     padding: 0; /* Hilangkan padding di sini karena sudah ada di .main-header */
 }
 
