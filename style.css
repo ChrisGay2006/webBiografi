@@ -61,7 +61,7 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Agar mengisi lebar .main-header */
+    width: 70%; /* Agar mengisi lebar .main-header */
     padding: 0; /* Hilangkan padding di sini karena sudah ada di .main-header */
 }
 
