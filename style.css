@@ -323,10 +323,12 @@ h1, h2, h3 {
     }
 
     .main-header {
-        width: 90%; /* Tetap 90% */
-        top: 10px; /* Lebih dekat ke atas */
-        padding: 10px 20px;
-        border-radius: 30px; /* Bulat lebih kecil */
+        width: 95%; /* Mungkin sedikit lebih lebar agar tidak terlalu sempit */
+        top: 10px; /* Jarak dari atas */
+        padding: 8px 15px; /* Kurangi padding untuk lebih ringkas */
+        border-radius: 25px; /* Bulat lebih kecil */
+        /* Pastikan z-index tetap tinggi */
+        z-index: 1000;
     }
 
     .navbar {
@@ -336,73 +338,115 @@ h1, h2, h3 {
     }
 
     .nav-links {
-        margin-top: 10px;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
 
     .nav-links li {
-        margin: 0 8px 8px 8px; /* Jarak antar link di mobile */
+        margin: 0 8px; 
+        margin-bottom: 5px;
     }
     
-    /* Logo dan teks link di mobile */
-    .main-header .logo {
-        font-size: 1.4em;
-    }
+
     .main-header .nav-links a {
-        font-size: 0.9em;
+        font-size: 0.85em;
+        padding: 5px 0;
+    }
+    
+    .hero-section {
+        padding: 120px 20px 80px; 
+        min-height: 60vh; 
     }
 
     .hero-content h1 {
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
 
     .hero-content .tagline {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
 
+    .section-padding {
+        padding: 60px 0; /* Kurangi padding section */
+    }
+
+    h1, h2, h3 {
+        margin-bottom: 30px; /* Kurangi margin bawah judul */
+        font-size: 1.8em; /* Ukuran judul h2/h3 lebih kecil */
+    }
+    
     .about-content {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
     }
 
     .about-image {
-        margin-bottom: 20px;
+        margin-bottom: 0px;
     }
 
+    .achievements-grid {
+        grid-template-columns: 1fr; /* Satu kolom di mobile untuk kesederhanaan */
+        gap: 20px;
+    }
+
+    /* Timeline Section */
     .timeline-container::after {
-        left: 20px; /* Garis timeline di kiri untuk mobile */
+        left: 20px; /* Garis vertikal di kiri */
     }
 
     .timeline-item {
-        width: 100%;
-        padding-left: 60px; /* Ruang untuk ikon di kiri */
+        width: 100%; /* Lebar penuh */
+        padding-left: 60px; /* Ruang untuk ikon/tanggal di kiri */
         padding-right: 10px;
     }
 
     .timeline-item::after {
-        left: 14px;
+        left: 14px; /* Posisi lingkaran di garis vertikal */
     }
 
     .timeline-item:nth-child(even) {
-        left: 0%;
+        left: 0%; /* Pastikan semua item di sisi kiri */
     }
 
     .timeline-item:nth-child(even)::after {
-        left: 14px;
+        left: 14px; /* Lingkaran untuk item genap juga di kiri */
     }
 
-    .timeline-item .timeline-date {
-        left: -10px; /* Posisikan tanggal di kiri */
-        top: 15px;
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        font-size: 1em;
+    .timeline-date {
+        left: -10px; /* Posisikan tanggal di luar item timeline */
+        top: 15px; /* Sesuaikan posisi vertikal */
+        width: 50px; /* Ukuran tanggal lebih kecil */
+        height: 50px;
+        line-height: 50px;
+        font-size: 0.9em;
     }
 
     .timeline-item:nth-child(odd) .timeline-date {
-        right: auto;
-        left: -10px;
+        right: auto; /* Reset right */
+        left: -10px; /* Pastikan semua tanggal di kiri */
+    }
+
+    .timeline-content {
+        padding: 15px 20px; /* Kurangi padding konten timeline */
+    }
+    .timeline-content h3 {
+        font-size: 1.2em; /* Ukuran judul timeline lebih kecil */
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 2 kolom atau lebih kecil di mobile */
+        gap: 15px;
+    }
+    .gallery-item img {
+        height: 150px; /* Tinggi gambar galeri lebih kecil */
+    }
+
+    /* Social Icons di Hero */
+    .social-icons a {
+        font-size: 1.8em; /* Sedikit lebih kecil di mobile */
+        margin: 0 10px;
     }
 }
